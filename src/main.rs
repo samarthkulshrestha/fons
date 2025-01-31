@@ -11,6 +11,8 @@ fn main() -> Result<()> {
     if args.len() < 2 {
         cmd::print_err("not enough arguments!");
         cmd::print_help();
+    } else if &args[1] == "-w" || &args[1] == "--web" {
+        web::launch(&conn);
     } else {
         let words = db::search(&conn, &args[1])?;
         cmd::print_def(&words[0]);

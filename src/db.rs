@@ -1,6 +1,7 @@
 use rusqlite::{params, Connection, Result};
+use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Clone)]
+#[derive(Deserialize, Serialize, Debug, Clone)]
 pub struct Word {
     pub _id: i32,
     pub word: String,

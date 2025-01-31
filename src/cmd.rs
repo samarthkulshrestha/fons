@@ -1,7 +1,7 @@
 use crate::db::Word;
+use rusqlite::Result;
 use inline_colorization::*;
 use std::env;
-use anyhow::Result;
 
 pub fn get_db_path() -> Result<String> {
     let envvar_db_path = env::var("FONS_DB");
@@ -31,7 +31,7 @@ pub fn print_def(word: &Word) {
     }
     match &word.ipa {
         Some(s) => println!("[{color_cyan}{}{color_reset}]", s),
-        None => ()
+        None => println!()
     }
     match &word.etym_txt_wiki {
         Some(s) => println!("+ {color_bright_magenta}etymology (wiktionary):{color_reset} \n    {}", s),
